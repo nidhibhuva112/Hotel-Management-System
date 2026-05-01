@@ -1,0 +1,192 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Surya Garden Hotel Admin</title>
+    <style>
+        /* General body styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+
+        /* Sidebar styling */
+        .sidebar {
+            width: 220px;
+            background: #2c3e50;
+            color: white;
+            height: 100vh;
+            position: fixed;
+            padding-top: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 22px;
+        }
+
+        .sidebar a {
+            display: block;
+            color: white;
+            padding: 12px 20px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border-left: 4px solid transparent;
+        }
+
+        .sidebar a:hover {
+            background: #34495e;
+            border-left: 4px solid #1abc9c;
+            padding-left: 16px;
+        }
+
+        /* Main content styling */
+        .main {
+            margin-left: 220px;
+            padding: 30px;
+        }
+
+        .main h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        /* Cards container */
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        /* Individual card styling */
+        .card {
+            background: white;
+            flex: 1 1 200px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        }
+
+        .card h3 {
+            margin: 0 0 10px 0;
+            color: #34495e;
+        }
+
+        .card p {
+            font-size: 20px;
+            font-weight: bold;
+            color: #1abc9c;
+        }
+
+        /* Button styling */
+        .btn {
+            display: inline-block;
+            background: #1abc9c;
+            color: white;
+            padding: 8px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn:hover {
+            background: #16a085;
+            transform: scale(1.05);
+        }
+
+        /* Table styling if used in pages like rooms.html */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: white;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        table th, table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        table th {
+            background: #34495e;
+            color: white;
+        }
+
+        table tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* Responsive adjustments */
+        @media screen and (max-width: 768px) {
+            .cards {
+                flex-direction: column;
+            }
+
+            .main {
+                margin-left: 0;
+                padding: 20px;
+            }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>Surya Garden Hotel</h2>
+    <a href="{% url 'admin_dashboard' %}">Dashboard</a>
+    <a href="{% url 'users' %}">Users</a>
+    <a href="{% url 'admin_rooms' %}">Rooms</a>
+    <a href="{% url 'admin_bookings' %}">Bookings</a>
+    <a href="{% url 'admin_feedbacks' %}">Feedbacks</a>
+    <a href="{% url 'admin_bills' %}">Bills</a>
+    <a href="{% url 'admin_payments' %}">Payments</a>
+    <a href="{% url 'logout' %}">Logout</a>
+</div>
+
+<div class="main">
+    <h1>Welcome, Admin!</h1>
+    <div class="cards">
+        <div class="card">
+            <h3>Total Customers</h3>
+            <p>{{ total_customers }}</p>
+        </div>
+        <div class="card">
+            <h3>Total Rooms</h3>
+            <p>{{ total_rooms }}</p>
+        </div>
+        <div class="card">
+            <h3>Total Bookings</h3>
+            <p>{{ total_bookings }}</p>
+        </div>
+        <div class="card">
+            <h3>Total Feedbacks</h3>
+            <p>{{ total_feedbacks }}</p>
+        </div>
+        <div class="card">
+            <h3>Total Payments</h3>
+            <p>{{ total_payments }}</p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

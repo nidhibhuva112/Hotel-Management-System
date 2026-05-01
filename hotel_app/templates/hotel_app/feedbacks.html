@@ -1,0 +1,31 @@
+{% extends 'hotel_app/base_admin.html' %}
+{% block content %}
+<h2>Feedbacks</h2>
+<table border="1" cellpadding="8" cellspacing="0" style="width:100%; border-collapse: collapse;">
+    <tr style="background:#f5a623; color:white;">
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Rating</th>
+        <th>Message</th>
+        <th>Date</th>
+    </tr>
+    {% for feedback in feedbacks %}
+    <tr>
+        <td>{{ feedback.id }}</td>
+        <td>{{ feedback.name }}</td>
+        <td>{{ feedback.email }}</td>
+        <td>
+            {% for i in "12345"|slice:":feedback.rating" %}
+                    ⭐
+            {% endfor %}
+            <span style="color:gray;">({{ feedback.rating }})</span>
+        </td>
+        <td>{{ feedback.message }}</td>
+        <td>{{ feedback.created_at|date:"d-m-Y H:i" }}</td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="6">No feedbacks found.</td></tr>
+    {% endfor %}
+</table>
+{% endblock %}

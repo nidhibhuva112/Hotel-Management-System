@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pay for {{ reservation.room.name }}</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1.1em;
+            margin: 10px 0;
+        }
+        button {
+            background-color: #f0ad4e;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #cc7a00;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Pay for {{ reservation.room.name }}</h2>
+<p>Name: {{ reservation.name }}</p>
+<p>Email: {{ reservation.email }}</p>
+<p>Phone: {{ reservation.phone }}</p>
+<p>Check-in: {{ reservation.check_in }}</p>
+<p>Check-out: {{ reservation.check_out }}</p>
+<p>Total Days: {{ total_days }}</p>
+<p>Total Price: ₹{{ total_price }}</p>
+
+{% if not reservation.payment_done %}
+<form method="POST">{% csrf_token %}
+    <button type="submit">Pay Now </button>
+</form>
+{% else %}
+<p style="color:green">Payment Completed ✅</p>
+{% endif %}
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>યુઝર રજીસ્ટ્રેશન્સ</title>
+    <link rel="stylesheet" href="{% static 'css/admin_sidebar.css' %}">
+</head>
+
+<body>
+    <div class="sidebar">
+        <h2>એડમિન પેનલ</h2>
+        <a href="{% url 'admin_dashboard' %}" class="sidebar-link">ડેશબોર્ડ</a>
+        <a href="{% url 'admin_rooms' %}" class="sidebar-link">રૂમ મેનેજ કરો</a>
+        <a href="{% url 'admin_bookings' %}" class="sidebar-link">બુકિંગ્સ</a>
+        <a href="{% url 'admin_bills' %}" class="sidebar-link">બિલ્સ</a>
+        <a href="{% url 'admin_registrations' %}" class="sidebar-link active">યુઝર રજીસ્ટ્રેશન</a>
+        <a href="{% url 'admin_feedback' %}" class="sidebar-link">ફીડબેક</a>
+        <a href="{% url 'logout' %}" class="sidebar-link logout-link">લોગઆઉટ</a>
+    </div>
+
+    <div class="content">
+        <h1>યુઝર રજીસ્ટ્રેશન્સ</h1>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>યુઝરનામ</th>
+                    <th>ઈમેઇલ</th>
+                    <th>અકાઉન્ટ બનાવ્યું</th>
+                    <th>સ્ટાફ/સુપરયુઝર</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.date_joined }}</td>
+                    <td>
+                        {% if user.is_staff %}
+                            Staff
+                        {% elif user.is_superuser %}
+                            Superuser
+                        {% else %}
+                            Regular
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

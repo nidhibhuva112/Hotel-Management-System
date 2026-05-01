@@ -1,0 +1,342 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>the grand surya hotel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=|Roboto+Sans:400,700|Playfair+Display:400,700">
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/aos.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-datepicker.css' %}">
+    <link rel="stylesheet" href="{% static 'css/jquery.timepicker.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fancybox.min.css' %}">
+    
+    <link rel="stylesheet" href="{% static 'fonts/ionicons/css/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'fonts/fontawesome/css/font-awesome.min.css' %}">
+
+    <!-- Theme Style -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+      /* Navigation links default color */
+         nav ul li a {
+           color: orange; /* Or use your base color */
+           text-decoration: none;
+           transition: 0.3s;
+         }
+
+         /* Hover effect */
+         nav ul li a:hover {
+           color: white;
+         }
+      .auth-links
+         {
+            color:#f5a623;
+         }
+      .auth-links a
+        {
+            color: #f5a623;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .auth-links a:hover
+         {
+            color: #fff;
+         }
+
+    </style>
+  </head>
+  <body>
+    <header class="site-header js-site-header">
+      <div class="container-fluid">
+        <div class="row align-items-center">
+          <div class="col-6 col-lg-4 site-logo" data-aos="fade">
+            <a href="{% url 'index' %}">SURYA GARDEN <br> HOTEL</a>
+          </div>
+          <div class="col-6 col-lg-8">
+            <div class="header-right d-flex align-items-center justify-content-end">
+
+              <!-- NEW MENU STARTS HERE -->
+              <nav>
+                <ul style="list-style: none; display: flex; gap: 20px; margin: 0; padding: 0;">
+                  <li><a href="{% url 'index' %}" >Home</a></li>
+                  <li><a href="{% url 'rooms' %}" >Rooms</a></li>
+                  <li><a href="{% url 'about' %}" >About</a></li>
+                  <li><a href="{% url 'contact' %}" >Contact</a></li>
+                  <li><a href="{% url 'feedback' %}" >Feedback</a></li>
+                  <li><a href="{% url 'reservation' %}" >Reservation</a></li>
+                  <li><a href="{% url 'restaurant' %}" >Dining</a></li>
+                  <li><a href="{% url 'gallary' %}" >Gallery</a></li>
+                </ul>
+              </nav>
+              <!-- NEW MENU ENDS HERE -->
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- END head -->
+
+    
+    <section class="site-hero inner-page overlay" style="background-image: url('{% static "images/hero_4.jpg" %}');" data-stellar-background-ratio="0.5">
+      <div class="container">
+        <div class="row site-hero-inner justify-content-center align-items-center">
+          <div class="col-md-10 text-center" data-aos="fade">
+            <h1 class="heading mb-3">Dining</h1>
+            <ul class="custom-breadcrumbs mb-4">
+              <li><a href="{% url 'index' %}">Home</a></li>
+              <li>&bullet;</li>
+              <li>Dining</li>
+            </ul><br><br>
+
+             <div>
+                {% if user.is_authenticated %}
+                    <div class="auth-links">
+                        Welcome, {{ user.username }} | <a href="{% url 'logout' %}">Logout</a>
+                    </div>
+                {% else %}
+                     <div class="auth-links">
+                        <a href="{% url 'login' %}">Login</a> | <a href="{% url 'signup' %}">Signup</a>
+                    </div>
+                {% endif %}
+              </div>
+
+
+          </div>
+        </div>
+      </div>
+
+      <a class="mouse smoothscroll" href="#next">
+        <div class="mouse-icon">
+          <span class="mouse-wheel"></span>
+        </div>
+      </a>
+    </section>
+    <!-- END section -->
+
+    <section class="section bg-image overlay" style="background-image: url('{% static "images/hero_3.jpg" %}');">
+      <div class="container">
+        <div class="row justify-content-center text-center mb-5">
+          <div class="col-md-7">
+            <h2 class="heading text-white" data-aos="fade">Our Dining Menu</h2>
+            <p class="text-white" data-aos="fade" data-aos-delay="100">"Savor a delightful culinary experience at our elegant dining area, where gourmet dishes are prepared with fresh ingredients and served in a warm, inviting atmosphere. Perfect for family meals, business lunches, or romantic dinners."</p>
+          </div>
+        </div>
+        <div class="food-menu-tabs" data-aos="fade">
+          <ul class="nav nav-tabs mb-5" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active letter-spacing-2" id="mains-tab" data-toggle="tab" href="#mains" role="tab" aria-controls="mains" aria-selected="true">Mains</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link letter-spacing-2" id="desserts-tab" data-toggle="tab" href="#desserts" role="tab" aria-controls="desserts" aria-selected="false">Desserts</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link letter-spacing-2" id="drinks-tab" data-toggle="tab" href="#drinks" role="tab" aria-controls="drinks" aria-selected="false">Drinks</a>
+            </li>
+          </ul>
+          <div class="tab-content py-5" id="myTabContent">
+            
+            
+            <div class="tab-pane fade show active text-left" id="mains" role="tabpanel" aria-labelledby="mains-tab">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="food-menu mb-5">
+                    <span class="d-block text-primary h4 mb-3">&#8377;200.00</span>
+                    <h3 class="text-white"><a href="#" class="text-white">Manchurian</a></h3>
+                    <p class="text-white text-opacity-7">A popular Indo-Chinese dish made with deep-fried vegetable or meat balls tossed in a tangy, spicy soy-based sauce. Served dry or with gravy.</p>
+                  </div>
+                  <div class="food-menu mb-5">
+                    <span class="d-block text-primary h4 mb-3">&#8377;150.00</span>
+                    <h3 class="text-white"><a href="#" class="text-white">Paneer Tikka Masala</a></h3>
+                    <p class="text-white text-opacity-7">Marinated paneer cubes grilled and simmered in a spiced tomato-based curry.</p>
+                  </div>
+                  <div class="food-menu mb-5">
+                    <span class="d-block text-primary h4 mb-3">&#8377;300.00</span>
+                    <h3 class="text-white"><a href="#" class="text-white">Veg Biryani</a></h3>
+                    <p class="text-white text-opacity-7">Fragrant basmati rice cooked with fresh vegetables, saffron, and aromatic spices.</p>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="food-menu mb-5">
+                    <span class="d-block text-primary h4 mb-3">&#8377;350.00</span>
+                    <h3 class="text-white"><a href="#" class="text-white">Pasta Alfredo</a></h3>
+                    <p class="text-white text-opacity-7">Creamy fettuccine pasta with mushrooms and parmesan cheese. Option to add chicken.</p>
+                  </div>
+                  <div class="food-menu mb-5">
+                    <span class="d-block text-primary h4 mb-3">&#8377;250.00</span>
+                    <h3 class="text-white"><a href="#" class="text-white">Pizza</a></h3>
+                    <p class="text-white text-opacity-7">A classic Italian dish made with a crispy baked dough base, topped with tomato sauce, cheese, and a variety of fresh toppings like vegetables, meats, or herbs.</p>
+                  </div>
+                  <div class="food-menu mb-5">
+                    <span class="d-block text-primary h4 mb-3">&#8377;80.00</span>
+                    <h3 class="text-white"><a href="#" class="text-white">Vegetable Pakora</a></h3>
+                    <p class="text-white text-opacity-7">Mixed vegetables dipped in gram flour batter and deep-fried for a crunchy snack.</p>
+                  </div>
+                </div>
+              </div>
+
+
+            </div> <!-- .tab-pane -->
+
+            <div class="tab-pane fade text-left" id="desserts" role="tabpanel" aria-labelledby="desserts-tab">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="food-menu mb-5">
+                    <span class="d-block text-primary h4 mb-3">&#8377;120.00</span>
+                    <h3 class="text-white"><a href="#" class="text-white">Chocolate Lava Cake</a></h3>
+                    <p class="text-white text-opacity-7">Soft chocolate cake with a warm, gooey molten chocolate center served with vanilla ice cream.</p>
+                  </div>
+                  <div class="food-menu mb-5">
+                    <span class="d-block text-primary h4 mb-3">&#8377;80.00</span>
+                    <h3 class="text-white"><a href="#" class="text-white">Gulab Jamun</a></h3>
+                    <p class="text-white text-opacity-7">Traditional Indian sweet dumplings made from milk solids, soaked in fragrant sugar syrup.</p>
+                  </div>
+                  <div class="food-menu mb-5">
+                    <span class="d-block text-primary h4 mb-3">&#8377;150.00</span>
+                    <h3 class="text-white"><a href="#" class="text-white">Brownie Sundae</a></h3>
+                    <p class="text-white text-opacity-7">Moist chocolate brownie topped with ice cream, chocolate sauce, and crunchy nuts.</p>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="food-menu mb-5">
+                    <span class="d-block text-primary h4 mb-3">&#8377;150.00</span>
+                    <h3 class="text-white"><a href="#" class="text-white">Rasmalai</a></h3>
+                    <p class="text-white text-opacity-7">Soft paneer patties soaked in sweetened saffron-flavored milk, garnished with pistachios.</p>
+                  </div>
+                  <div class="food-menu mb-5">
+                    <span class="d-block text-primary h4 mb-3">&#8377;250.00</span>
+                    <h3 class="text-white"><a href="#" class="text-white">Pancakes</a></h3>
+                    <p class="text-white text-opacity-7">Soft, fluffy cakes made from a light batter, served warm with butter, maple syrup, honey, or fresh fruits.</p>
+                  </div>
+                  <div class="food-menu mb-5">
+                    <span class="d-block text-primary h4 mb-3">&#8377;100.00</span>
+                    <h3 class="text-white"><a href="#" class="text-white">Ice Cream Selection</a></h3>
+                    <p class="text-white text-opacity-7">Variety of classic and seasonal flavors served with your choice of toppings.</p>
+                  </div>
+                </div>
+              </div>
+            </div> <!-- .tab-pane -->
+            <div class="tab-pane fade text-left" id="drinks" role="tabpanel" aria-labelledby="drinks-tab">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="food-menu mb-5">
+                    <span class="d-block text-primary h4 mb-3">&#8377;50.00</span>
+                    <h3 class="text-white"><a href="#" class="text-white">Fresh Lime Soda</a></h3>
+                    <p class="text-white text-opacity-7">A refreshing blend of soda water, lemon juice, and sugar or salt – served chilled.</p>
+                  </div>
+                  <div class="food-menu mb-5">
+                    <span class="d-block text-primary h4 mb-3">&#8377;100.00</span>
+                    <h3 class="text-white"><a href="#" class="text-white">Cold Coffee</a></h3>
+                    <p class="text-white text-opacity-7">Smooth and creamy coffee blended with milk and ice, topped with whipped cream.</p>
+                  </div>
+                  <div class="food-menu mb-5">
+                    <span class="d-block text-primary h4 mb-3">&#8377;40.00</span>
+                    <h3 class="text-white"><a href="#" class="text-white">Masala Chai</a></h3>
+                    <p class="text-white text-opacity-7">Traditional Indian tea brewed with milk, tea leaves, and aromatic spices.</p>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="food-menu mb-5">
+                    <span class="d-block text-primary h4 mb-3">&#8377;180.00</span>
+                    <h3 class="text-white"><a href="#" class="text-white">Mocktails</a></h3>
+                    <p class="text-white text-opacity-7">Colorful, non-alcoholic drinks crafted with fruit juices, herbs, and soda.</p>
+                  </div>
+                  <div class="food-menu mb-5">
+                    <span class="d-block text-primary h4 mb-3">&#8377;150.00</span>
+                    <h3 class="text-white"><a href="#" class="text-white">Fresh Fruit Juices</a></h3>
+                    <p class="text-white text-opacity-7">Seasonal fruits juiced fresh to retain their natural taste and nutrition.</p>
+                  </div>
+                  <div class="food-menu mb-5">
+                    <span class="d-block text-primary h4 mb-3">&#8377;90.00</span>
+                    <h3 class="text-white"><a href="#" class="text-white">Hot Chocolate</a></h3>
+                    <p class="text-white text-opacity-7">Rich, velvety hot chocolate topped with whipped cream and cocoa.</p>
+                  </div>
+                </div>
+              </div>
+            </div> <!-- .tab-pane -->
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="section bg-image overlay" style="background-image: url('{% static "images/hero_4.jpg" %}');">
+      <div class="container" >
+        <div class="row align-items-center">
+          <div class="col-12 col-md-6 text-center mb-4 mb-md-0 text-md-left" data-aos="fade-up">
+            <h2 class="text-white font-weight-bold">A Best Place To Stay. Reserve Now!</h2>
+          </div>
+          <div class="col-12 col-md-6 text-center text-md-right" data-aos="fade-up" data-aos-delay="200">
+            <a href="{% url 'reservation' %}" class="btn btn-outline-white-primary py-3 text-white px-5">Reserve Now</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+   <footer class="section footer-section">
+      <div class="container">
+        <div class="row mb-4">
+          <div class="col-md-3 mb-5">
+            <ul class="list-unstyled link">
+              <li><a href="{% url 'about' %}">About Us</a></li>
+              <li><a href="{% url 'gallary' %}">Gallary</a></li>
+              <li><a href="{% url 'feedback' %}">Feedback</a></li>
+             <li><a href="{% url 'rooms' %}">Rooms</a></li>
+            </ul>
+          </div>
+          <div class="col-md-3 mb-5">
+            <ul class="list-unstyled link">
+              <li><a href="{% url 'rooms' %}">The Rooms &amp; Suites</a></li>
+              <li><a href="{% url 'about' %}">About Us</a></li>
+              <li><a href="{% url 'contact' %}">Contact Us</a></li>
+              <li><a href="{% url 'restaurant' %}">Restaurant</a></li>
+            </ul>
+          </div>
+          <div class="col-md-3 mb-5 pr-md-5 contact-info">
+            <!-- <li>198 West 21th Street, <br> Suite 721 New York NY 10016</li> -->
+            <p><span class="d-block"><span class="ion-ios-location h5 mr-3 text-primary"></span>Address:</span> <span> opp airport, Chital Rd, Amreli,<br> Gujarat 365601</span></p>
+            <p><span class="d-block"><span class="ion-ios-telephone h5 mr-3 text-primary"></span>Phone:</span> <span> 02792 223 870</span></p>
+            <p><span class="d-block"><span class="ion-ios-email h5 mr-3 text-primary"></span>Email:</span> <span> suryagardenamreli@gmail.com</span></p>
+          </div>
+          <div class="col-md-3 mb-5">
+            <p>Sign up for our newsletter</p>
+            <form action="#" class="footer-newsletter">
+              <div class="form-group">
+                <input type="email" class="form-control" placeholder="Email...">
+                <button type="submit" class="btn"><span class="fa fa-paper-plane"></span></button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </footer>
+    
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/jquery-migrate-3.0.1.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/jquery.stellar.min.js' %}"></script>
+    <script src="{% static 'js/jquery.fancybox.min.js' %}"></script>
+    
+    
+    <script src="{% static 'js/aos.js' %}"></script>
+    
+    <script src="{% static 'js/bootstrap-datepicker.js' %}"></script>
+    <script src="{% static 'js/jquery.timepicker.min.js' %}"></script>
+
+    
+
+    <script src="{% static 'js/main.js' %}"></script>
+  </body>
+</html>

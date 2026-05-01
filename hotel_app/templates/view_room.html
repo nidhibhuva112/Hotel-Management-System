@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ room.name }} - Details</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'your_styles.css' %}">
+    <style>
+        /* ========== Global Styling ========== */
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6fb;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* ========== Container ========== */
+h1 {
+    text-align: center;
+    font-size: 2.2rem;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+/* ========== Room Image ========== */
+img {
+    display: block;
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto 20px;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect on image */
+img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+}
+
+/* ========== Paragraphs ========== */
+p {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 10px auto;
+    background: #fff;
+    padding: 12px 18px;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* ========== Buttons ========== */
+a.btn {
+    display: inline-block;
+    padding: 12px 22px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin: 10px;
+    text-align: center;
+}
+
+/* Primary button */
+a.btn-primary {
+    background: #3498db;
+    color: #fff;
+}
+
+a.btn-primary:hover {
+    background: #2980b9;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(41, 128, 185, 0.4);
+}
+
+/* Secondary button */
+a.btn-secondary {
+    background: #95a5a6;
+    color: #fff;
+}
+
+a.btn-secondary:hover {
+    background: #7f8c8d;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(127, 140, 141, 0.4);
+}
+
+/* ========== Responsive Design ========== */
+@media (max-width: 768px) {
+    img {
+        max-width: 100%;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+
+    a.btn {
+        display: block;
+        width: 90%;
+        margin: 10px auto;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <h1>{{ room.name }}</h1>
+    <img src="{{ room.image.url }}" alt="Room Image" class="img-fluid mb-3">
+    <p><strong>Description:</strong> {{ room.description }}</p>
+    <p><strong>Price:</strong> {{ room.price }}&#8377;/ 24 HOUR</p>
+    <a href="{% url 'book_room' room.id %}" class="btn btn-primary">Book This Room</a>
+    <a href="{% url 'rooms' %}" class="btn btn-secondary">Back to Rooms</a>
+</body>
+</html>

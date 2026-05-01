@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hotel Bill - Surya Garden Hotel</title>
+    <style>
+        /* General body styling */
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to right, #f4f4f9, #e2e2f1);
+            padding: 30px;
+            margin: 0;
+        }
+
+        /* Bill container */
+        .bill-container {
+            max-width: 750px;
+            margin: auto;
+            background: #fff;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .bill-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+        }
+
+        /* Hotel name */
+        .hotel-name {
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            color: #27ae60;
+            margin-bottom: 5px;
+        }
+
+        /* Heading */
+        h2 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+        }
+
+        /* Bill details */
+        .bill-details p {
+            font-size: 16px;
+            margin: 8px 0;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .bill-details p:hover {
+            background-color: #f1f9f1;
+        }
+
+        .bill-details p span {
+            font-weight: bold;
+            color: #34495e;
+        }
+
+        /* Payment status */
+        .paid {
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        .pending {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 25px;
+            text-align: right;
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="bill-container">
+        <div class="hotel-name">Surya Garden Hotel</div>
+        <h2>Booking Bill</h2>
+
+        <div class="bill-details">
+            <h2>Hotel Bill</h2>
+<p>Name: {{ reservation.name }}</p>
+<p>Email: {{ reservation.email }}</p>
+<p>Phone: {{ reservation.phone }}</p>
+<p>Room: {{ reservation.room.name }}</p>
+<p>Check-in: {{ reservation.check_in }}</p>
+<p>Check-out: {{ reservation.check_out }}</p>
+<p>Total Price: ₹{{ total_price }}</p>
+<p>Payment Status: {% if reservation.payment_done %} Paid {% else %} Pending {% endif %}</p>
+
+        </div>
+
+        <div class="footer">
+            Thank you for choosing Surya Garden Hotel!
+        </div>
+    </div>
+</body>
+</html>
